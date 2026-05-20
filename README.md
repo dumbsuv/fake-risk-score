@@ -29,19 +29,42 @@
 - cointegrated/rubert-tiny2-cedr-emotion-detection
 - cointegrated/rubert-tiny-toxicity
 
+## Данные
+
+Датасет не загружается в репозиторий из-за размера и лицензионных ограничений.
+
+Для запуска проекта необходимо скачать датасет Kaggle `Fake and real Russian news` и поместить файлы:
+
+- `train_bodies.csv`
+- `train_stances.csv`
+- `test_bodies.csv`
+- `test_stances_unlebeledb.csv`
+
+в папку:
+
+```text
+data/raw/
+```
+Ссылка на скачивание датасета: https://www.kaggle.com/datasets/morfifinka/fake-real-news-ru?resource=download
+
 ## Запуск анализа одного текста, примеры
 
 ```powershell
 python src/cli.py --text "Срочно! СМИ молчат! Очевидцы сообщают о катастрофе. Перешлите всем, пока это не удалили!!!"
+```
 
-##Запуск анализа пары "заголовок+текст"
+## Запуск анализа пары "заголовок+текст"
 
+```powershell
 python src/cli.py --headline "Банк России повысил ключевую ставку" --body "Банк России сообщил о решении снизить ключевую ставку. Информация опубликована на официальном сайте регулятора."
 
 python src/cli.py --headline "Банк России снизил ключевую ставку" --body "Банк России сообщил о решении снизить ключевую ставку. Информация опубликована на официальном сайте регулятора."
+```
 
 ## Оценка выборки raw
 
+```powershell
 python src/evaluate.py --limit 100 --threshold 0.30
 
 python src/tune_threshold.py
+```
